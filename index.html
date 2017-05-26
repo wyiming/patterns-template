@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>板卡</title>
+    <!-- <link rel="stylesheet" href="css/reset.css"> -->
+<style>
+        /**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* custom */
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+}
+
+li {
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+html, body {
+    width: 100%;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+    </style>
+    <style>
+    body {
+        font-family: 'Microsoft YaHei';
+    }
+    h1 {
+        height: 30px;
+        line-height: 30px;
+        text-indent: 50px;
+        font-size: 20px;
+    }
+    input {
+        margin: 10px 0;
+    }
+    .container {
+        background: #f2f2f2;
+        float: left;
+        width: 659px;
+        height: 847px;
+        margin-left: 200px;
+        position: relative;
+        font-size: 22px;
+        overflow: hidden;
+    }
+    
+    .productNoIpt {
+        position: absolute;
+        display: inline-block;
+        z-index: 11;
+        right: 65px;
+        top: 125px
+    }
+    
+    .container .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+    
+    .container .header img {
+        width: 100%;
+    }
+    
+    .container .footer {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+    }
+    
+    .container .footer img {
+        width: 100%;
+    }
+    
+    .container .body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 2px;
+        background: #000;
+    }
+    
+    .container .body div {
+        position: absolute;
+        cursor: pointer;
+        height: 100%;
+        width: 45%;
+        background: #000;
+        background-repeat: no-repeat;
+        
+    }
+    .container .body div:nth-of-type(1) {
+        background-size: 50%;
+    }
+    .container .body div:nth-of-type(2) {
+        right: 0;
+        background-size: 100%;
+    }
+    .config-box {
+        float: left;
+        margin-left: 70px
+    }
+    
+    .config-box .patterns {
+        height: 350px;
+    }
+    
+    .config-box .patterns .pt-wrapper {
+        height: 200px;
+        width: 200px;
+        background: #ccc;
+    }
+    
+    .config-box .patterns .pt-wrapper .pt-img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .clockwise {
+        margin-left: 80px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>板卡</h1>
+    <div class="container">
+        <div class="productNoIpt" id="productNo">
+            
+        </div>
+        <div class="header">
+            <img src="header_&_footer/header.png" alt="">
+        </div>
+        <div class="body">
+            <div id="div1"></div>
+            <div id="div2"></div>
+        </div>
+        <div class="footer">
+            <img src="header_&_footer/footer.png" alt="">
+        </div>
+    </div>
+    <div class="config-box">
+        <div class="patterns1 patterns">
+            左边花型
+            <input id="input1" type="file" accept="image/*" capture="camera" name="file">
+            <div class="pt-wrapper">
+                <img src="" class="pt-img" id="prevImg1">
+            </div>
+            10%<input id="range1" type="range" step="5" max="150" min="10">150%
+            <br>
+            <button id="anticlockwise1">逆时针</button>
+            <button id="clockwise1" class="clockwise">顺时针</button>
+        </div>
+        <div class="patterns2 patterns">
+            右边花型
+            <input id="input2" type="file" accept="image/*" capture="camera" name="file">
+            <div class="pt-wrapper">
+                <img src="" class="pt-img" id="prevImg2">
+            </div>
+            10%<input id="range2" type="range" step="5" max="150" min="10">150%
+            <br>
+            <button id="anticlockwise2">逆时针</button>
+            <button id="clockwise2" class="clockwise">顺时针</button>
+            <br>
+            <br>
+            <button id="div2Bigger">增加2显示宽度</button>
+            <button id="div2Max">2铺满居中</button>
+        </div>
+    </div>
+    <script>
+    var productNo = c('#productNo');
+    var input1 = c('#input1');
+    var prevImg1 = c('#prevImg1');
+    var range1 = c('#range1');
+    var anticlockwise1 = c('#anticlockwise1');
+    var clockwise1 = c('#clockwise1');
+    var div1 = c('#div1');
+
+    var input2 = c('#input2');
+    var prevImg2 = c('#prevImg2');
+    var range2 = c('#range2');
+    var anticlockwise2 = c('#anticlockwise2');
+    var clockwise2 = c('#clockwise2');
+    var div2 = c('#div2');
+   
+    var div2Bigger = c('#div2Bigger');
+    var div2Max = c('#div2Max');
+
+    input1.onchange = function() {
+
+        uploadPictrue(this).then(res => {
+            prevImg1.src = res;
+            div1.style.backgroundImage = 'url(' + res + ')';
+            div2.style.backgroundImage = 'url(' + res + ')';
+        });
+    }
+    input2.onchange = function() {
+        uploadPictrue(this).then(res => {
+            prevImg2.src = res;
+            div2.style.backgroundImage = 'url(' + res + ')';
+        });
+    }
+    
+    range1.oninput = function() {
+        div1.style.backgroundSize = this.value + '%';
+    };
+    range2.oninput = function() {
+        div2.style.backgroundSize = this.value + '%';
+    };
+
+    var div1_Deg = 0.05;
+    // div1顺时针
+    clockwise1.onclick = function() {
+        div1.style.transform  = 
+        div1.style.webkitTransform = 
+        div1.style.mozTransform = 'rotate(' + div1_Deg + 'deg)';
+        div1_Deg += 0.05;
+    }
+    // div1逆时针
+    anticlockwise1.onclick = function() {
+        div1_Deg -= 0.05;
+        div1.style.transform  = 
+        div1.style.webkitTransform = 
+        div1.style.mozTransform = 'rotate(' + div1_Deg + 'deg)';
+    }
+
+    var div2_Deg = 0.05;
+    // div2顺时针
+    clockwise2.onclick = function() {
+        div2.style.transform  = 
+        div2.style.webkitTransform = 
+        div2.style.mozTransform = 'rotate(' + div2_Deg + 'deg)';
+        div2_Deg += 0.05;
+    }
+     // div1逆时针
+    anticlockwise2.onclick = function() {
+        div2_Deg -= 0.05;
+        div2.style.transform  = 
+        div2.style.webkitTransform = 
+        div2.style.mozTransform = 'rotate(' + div2_Deg + 'deg)';
+    }
+
+    div2Bigger.onclick = function() {
+        var width = div2.clientWidth;
+        console.log(width);
+        div2.style.width = (width + 5) + 'px';
+    }
+    div2Max.onclick = function() {
+        div2.style.width = '80%';
+        div2.style.left = '10%';
+    }
+    // 上传图片，传入input[type=file] 的onchange 事件
+    // 返回一个 Promise 对象
+    function c(str) {
+        return document.querySelector(str);
+    }
+
+    function uploadPictrue(e) {
+        console.log('e', e.value);
+        var num =  e.value.match(/\d+/ig);
+        productNo.innerHTML = num[0];
+        return _getBase64Image(e);
+    }
+
+    function _getBase64Image(file) {
+        // console.log(file);
+        let reader = new FileReader();
+        return new Promise((resolve, reject) => {
+            reader.onload = (evt) => {
+                // console.log(evt.target.result);
+               
+                resolve(evt.target.result);
+            };
+            reader.onerror = (evt) => {
+                reject(evt);
+            };
+            reader.readAsDataURL(file.files[0]);
+        });
+    }
+    window.onload = function() {
+        new Drag("div1");
+        new Drag("div2");
+    }
+
+    function Drag(id) {
+        var _this = this;
+        this.oDiv = document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+        this.oDiv.onmousedown = function(ev) {
+            _this.fnDown(ev);
+            return false;
+        };
+    }
+    Drag.prototype.fnDown = function(ev) {
+        var _this = this;
+        var oEvent = ev || event;
+        this.disX = oEvent.clientX - this.oDiv.offsetLeft;
+        this.disY = oEvent.clientY - this.oDiv.offsetTop;
+        document.onmousemove = function(ev) {
+            _this.fnMove(ev);
+        };
+        document.onmouseup = function() {
+            _this.fnUp();
+        };
+    };
+    Drag.prototype.fnMove = function(ev) {
+        var oEvent = ev || event;
+        var l = oEvent.clientX - this.disX;
+        var t = oEvent.clientY - this.disY;
+        // if (l < 0) {
+        //     l = 0;
+        // } else if (l > document.documentElement.clientWidth - this.oDiv.offsetWidth) {
+        //     l = document.documentElement.clientWidth - this.oDiv.offsetWidth;
+        // }
+        // if (t < 0) {
+        //     t = 0;
+        // } else if (t > document.documentElement.clientHeight - this.oDiv.offsetHeight) {
+        //     t = document.documentElement.clientHeight - this.oDiv.offsetHeight;
+        // }
+        this.oDiv.style.left = l + 'px';
+        this.oDiv.style.top = t + 'px';
+    };
+    Drag.prototype.fnUp = function() {
+        document.onmousemove = null;
+        document.onmouseup = null;
+    };
+    </script>
+</body>
+
+</html>
